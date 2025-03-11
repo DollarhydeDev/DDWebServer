@@ -70,6 +70,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)Build\Final\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Build\Temp\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -104,7 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Core;$(ProjectDir)Services\Networking\Sockets;$(ProjectDir)DataTypes;$(ProjectDir)Services\Networking;$(ProjectDir)Services</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)WebPages;$(ProjectDir)Core;$(ProjectDir)Services\Networking\Sockets;$(ProjectDir)DataTypes;$(ProjectDir)Services\Networking;$(ProjectDir)Services</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +134,8 @@
   <ItemGroup>
     <ClCompile Include="Core\DDWebServer.cpp" />
     <ClCompile Include="DataTypes\String\DDString.cpp" />
+    <ClCompile Include="Services\Routing\DDWebRouter.cpp" />
+    <ClCompile Include="WebPages\Home\HomePage.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Services\Logging\DDLogger.cpp" />
     <ClCompile Include="Services\Networking\Server\DDServer.cpp" />
@@ -140,6 +146,9 @@
     <ClInclude Include="Core\WebServerActions\DDWebRequest.h" />
     <ClInclude Include="DataTypes\List\DDList.h" />
     <ClInclude Include="DataTypes\String\DDString.h" />
+    <ClInclude Include="Services\Routing\DDWebRouter.h" />
+    <ClInclude Include="WebPages\Home\HomePage.h" />
+    <ClInclude Include="WebPages\DDWebPage.h" />
     <ClInclude Include="Services\Logging\DDLogger.h" />
     <ClInclude Include="Services\Networking\Server\DDServer.h" />
     <ClInclude Include="Services\Networking\Sockets\ServerSocket\DDServerSocket.h" />
