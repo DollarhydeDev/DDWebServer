@@ -53,5 +53,8 @@
     <ClInclude Include="Services\Networking\Sockets\ServerSocket\DDServerSocket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Core\WebServerActions\DDWebRequest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -104,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Services\Networking\Sockets;$(ProjectDir)DataTypes;$(ProjectDir)Services\Networking;$(ProjectDir)Services</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Core;$(ProjectDir)Services\Networking\Sockets;$(ProjectDir)DataTypes;$(ProjectDir)Services\Networking;$(ProjectDir)Services</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\DDWebServer.h" />
+    <ClInclude Include="Core\WebServerActions\DDWebRequest.h" />
     <ClInclude Include="DataTypes\List\DDList.h" />
     <ClInclude Include="DataTypes\String\DDString.h" />
     <ClInclude Include="Services\Logging\DDLogger.h" />

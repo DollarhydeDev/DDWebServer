@@ -9,6 +9,8 @@
 #include "Logging/DDLogger.h"
 #include "ServerSocket/DDServerSocket.h"
 
+#include "WebServerActions/DDWebRequest.h"
+
 class DDServer
 {
 	// Members
@@ -24,12 +26,15 @@ public:
 
 	// Private Functions
 private:
+	DDWebRequest ParseRequest(const char* requestData);
+	void SendResponse(SOCKET client);
 
 	// Public functions
 public:
 	static DDServer& GetInstance();
 
 	bool Init();
-	void WaitForConnection(DDString portToListenOn);
+	DDWebRequest WaitForRequest(DDString portToListenOn);
+
 };
 
