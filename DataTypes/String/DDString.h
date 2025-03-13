@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "List/DDList.h"
+
 class DDString
 {
 private:
@@ -34,6 +36,12 @@ private:
 
 public:
 	const char* Data() const { return _buffer; }
+
+	DDList<DDString> SplitBy(const char& characterToSplitBy) const;
+
+	DDString SubString(int startIndex, int endIndex) const;
+
+	bool Equals(const DDString& otherString) const;
 
 public:
 	// Copy assignment
@@ -77,6 +85,11 @@ public:
 		otherString._bufferCapacity = 0;
 
 		return *this;
+	}
+
+	bool operator==(const DDString& otherString) const
+	{
+		return Equals(otherString);
 	}
 
 	// Stream operator

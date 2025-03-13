@@ -82,7 +82,7 @@ public:
 		_buffer[_bufferSize++] = itemToAdd;
 	}
 
-	int Length()
+	int Count()
 	{
 		return _bufferSize;
 	}

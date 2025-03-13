@@ -6,18 +6,23 @@
 #pragma comment(lib, "Ws2_32.lib")
 
 #include "List/DDList.h"
-#include "Logging/DDLogger.h"
-#include "ServerSocket/DDServerSocket.h"
+#include "String/DDString.h"
 
+#include "ServerSocket/DDServerSocket.h"
 #include "WebServerActions/DDWebRequest.h"
+
+#include "Logging/DDLogger.h"
+#include "Routing/DDWebRouter.h"
 
 class DDServer
 {
 	// Members
 private:
 	WSADATA _wsaData;
-	DDLogger& _logger;
 	DDServerSocket _serverSocket;
+
+	DDLogger& _logger;
+	DDWebRouter& _router;
 
 	// Constructors
 public:
@@ -26,7 +31,7 @@ public:
 
 	// Private Functions
 private:
-	DDWebRequest ParseRequest(const char* requestData);
+	DDWebRequest ParseRequest(const DDString& requestData);
 	void SendResponse(SOCKET client);
 
 	// Public functions

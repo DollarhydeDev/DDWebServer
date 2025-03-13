@@ -1,20 +1,22 @@
 #include "DDServer.h"
 
-DDServer::DDServer() : _logger(DDLogger::GetInstance()), _serverSocket(), _wsaData() {}
+DDServer::DDServer() : _wsaData(), _serverSocket(), _logger(DDLogger::GetInstance()), _router(DDWebRouter::GetInstance()) {}
 DDServer::~DDServer()
 {
 	WSACleanup();
 }
 
-DDWebRequest DDServer::ParseRequest(const char* requestData)
+DDWebRequest DDServer::ParseRequest(const DDString& requestData)
 {
-    DDWebRequest request;
+    DDList<DDString> parsedRequest = requestData.SplitBy('\r\n');
 
-    // TO DO: add function to DD string for locating characters
-    // Will use new DDString methods to split up the request data and parse it
+    DDWebRequest webRequest;
+    webRequest.method = parsedRequest.GetAt(0).SubString(0, 2);
+    webRequest.target = parsedRequest.GetAt(0).SubString(4, 8);
 
-    return request;
+    return webRequest;
 }
+
 void DDServer::SendResponse(SOCKET client)
 {
     const char* body = "<html><body>Hello from Web server!</body></html>";
@@ -66,10 +68,14 @@ DDWebRequest DDServer::WaitForRequest(DDString portToListenOn)
                 int bytesReceived = recv(client, buffer, sizeof(buffer) - 1, 0);
                 if (bytesReceived > 0)
                 {
-                    buffer[bytesReceived] = '\0';
-                    _logger.LogInfo("Received request");
+                    buffer[bytesReceived] = 0x00;
+                    DDString requestData(buffer);
 
-                    DDWebRequest request = ParseRequest(buffer);
+                    _logger.LogInfo("Received request:");
+                    _logger.LogInfo(requestData);
+
+                    DDWebRequest request = ParseRequest(requestData);
+                    DDString response = _router.RouteRequest(request);
                     SendResponse(client);
 
                     closesocket(client);

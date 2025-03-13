@@ -39,6 +39,9 @@
     <ClCompile Include="Services\Routing\DDWebRouter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WebPages\ErrorPage\ErrorPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\DDWebServer.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Services\Routing\DDWebRouter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WebPages\ErrorPage\ErrorPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

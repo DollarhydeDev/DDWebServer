@@ -135,6 +135,7 @@
     <ClCompile Include="Core\DDWebServer.cpp" />
     <ClCompile Include="DataTypes\String\DDString.cpp" />
     <ClCompile Include="Services\Routing\DDWebRouter.cpp" />
+    <ClCompile Include="WebPages\ErrorPage\ErrorPage.cpp" />
     <ClCompile Include="WebPages\Home\HomePage.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Services\Logging\DDLogger.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="DataTypes\List\DDList.h" />
     <ClInclude Include="DataTypes\String\DDString.h" />
     <ClInclude Include="Services\Routing\DDWebRouter.h" />
+    <ClInclude Include="WebPages\ErrorPage\ErrorPage.h" />
     <ClInclude Include="WebPages\Home\HomePage.h" />
     <ClInclude Include="WebPages\DDWebPage.h" />
     <ClInclude Include="Services\Logging\DDLogger.h" />
